@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Search Results</h1>
+        <div class="recipe-container">
+            {% for recipe in recipes %}
+            <a href="{{ url_for('recipe_details', recipe_id=recipe['id']) }}">
+                <div class="recipe-box">
+                    <img src="{{ recipe['image'] }}" alt="{{ recipe['title'] }}">
+                    <h3>{{ recipe['title'] }}</h3>
+                    <p>Rating: {{ recipe['spoonacularScore'] }}/100</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
